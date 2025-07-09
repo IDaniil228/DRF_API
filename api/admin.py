@@ -1,11 +1,11 @@
+from django.conf import settings
 from django.contrib import admin
 
-from api.models import OrderItem, Order
+from api.models import OrderItem, Order, User, Product
 
 
 class OrderItemInline(admin.TabularInline):
     model =  OrderItem
-
 
 class OrderAdmin(admin.ModelAdmin):
     inlines = [
@@ -14,3 +14,5 @@ class OrderAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Order, OrderAdmin)
+admin.site.register(User)
+admin.site.register(Product)

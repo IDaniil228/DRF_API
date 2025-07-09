@@ -56,3 +56,10 @@ class OrderItem(models.Model):
 
     def __str__(self):
         return f"{self.quantity} x {self.product.name} in Order {self.order.order_id}"
+
+    def __eq__(self, other):
+        if not isinstance(other, OrderItem):
+            return False
+        if other is None:
+            return False
+        return self.product == other.product and self.quantity == other.quantity

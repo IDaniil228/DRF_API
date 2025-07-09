@@ -1,4 +1,6 @@
 from django.db.models import Max
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import cache_page
 
 from rest_framework import generics, filters
 from rest_framework.permissions import AllowAny, IsAdminUser
@@ -21,6 +23,16 @@ class ProductsListCreateAPIView(generics.ListCreateAPIView):
         filters.SearchFilter,
         filters.OrderingFilter,
     ]
+
+    @method_decorator(cache_page(60 * 15, key_prefix="product_list"))
+    def list(self, request, *args, **kwargs):
+        return super().list(request, *args, **kwargs)
+
+    def get_queryset(self):
+        import time
+        time.sleep(2)
+        return super().get_queryset()
+
     search_fields = ["name", "description"]
     ordering_fields = ["price"]
 

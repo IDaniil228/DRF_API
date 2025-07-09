@@ -15,7 +15,9 @@ dependencies = [
     "django-extensions (>=4.1,<5.0)",
     "djangorestframework-simplejwt (>=5.5.0,<6.0.0)",
     "drf-spectacular (>=0.28.0,<0.29.0)",
-    "django-filter (>=25.1,<26.0)"
+    "django-filter (>=25.1,<26.0)",
+    "django-redis (>=6.0.0,<7.0.0)",
+    "redis (>=6.2.0,<7.0.0)"
 ]
 
 [tool.poetry]
